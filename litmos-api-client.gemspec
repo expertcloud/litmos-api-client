@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'litmos-api-client'
-  s.version     = '0.0.1'
+  s.version     = '0.0.3'
   s.date        = '2014-05-09'
   s.summary     = "Simple lib to consume litmos api"
   s.description = "Simple lib to consume litmos api from litmos platform"
