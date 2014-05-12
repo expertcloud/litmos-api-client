@@ -15,9 +15,8 @@ Gem::Specification.new do |s|
     "lib/litmos_api_client/users.rb",
     "litmos-api-client.gemspec"
   ]
-  s.homepage    =
-    'http://rubygems.org/gems/hola'
-  s.license       = 'MIT'
+  s.homepage = 'https://github.com/garciaf/litmos-api-client'
+  s.license = 'MIT'
 
   s.add_runtime_dependency 'rest-client', '>= 0'
 end
