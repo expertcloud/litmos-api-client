@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'litmos-api-client'
-  s.version     = '0.0.3'
+  s.version     = '0.0.4'
   s.date        = '2014-05-09'
   s.summary     = "Simple lib to consume litmos api"
   s.description = "Simple lib to consume litmos api from litmos platform"
@@ -18,5 +18,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/garciaf/litmos-api-client'
   s.license = 'MIT'
 
-  s.add_runtime_dependency 'rest-client', '>= 0'
+  s.add_runtime_dependency 'rest-client', '~> 1'
+  s.add_development_dependency 'rake',  '~> 10.3'
+  s.add_development_dependency 'rspec', '~> 2.14'
 end

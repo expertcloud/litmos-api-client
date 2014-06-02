@@ -34,7 +34,15 @@ module LitmosApiClient
     end
 
     def update_user(id, options={})
-      put "users/#{id}", options
+      params = {
+        'Id' => options[:id],
+        'UserName' => options[:username],
+        'FirstName' => options[:first_name],
+        'LastName' => options[:last_name],
+        'Email' => options[:email],
+        'Active' => options[:active]
+      }
+      put "users/#{id}", params
     end
   end
 end
