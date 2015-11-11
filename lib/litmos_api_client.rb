@@ -8,6 +8,7 @@ require File.dirname(__FILE__) + '/litmos_api_client/courses'
 module LitmosApiClient
   class NotFound < Exception; end
   class ApiError < Exception; end
+  class LimitExceeded < Exception; end
   class ArgumentError < Exception; end
   
   class API
@@ -57,6 +58,9 @@ module LitmosApiClient
         when 404 # 404 Not Found. The User/Course etc that you requested does not exist
           raise NotFound.new(response)
 
+        when 503 # 503 (Service Unavailable) - Rating Limit Exceeded. 100 requests per minute. This rate limit is based on a rolling 60 second window
+          raise LimitExceeded.new(response)
+
         else
           # 400 Bad Request. Check that your Uri and request body is well formed
           # 403 Forbidden. Check your API key, HTTPS setting, Source parameter etc
@@ -97,6 +101,9 @@ module LitmosApiClient
 
         when 404 # 404 Not Found. The User/Course etc that you requested does not exist
           raise NotFound.new(response)
+
+        when 503 # 503 (Service Unavailable) - Rating Limit Exceeded. 100 requests per minute. This rate limit is based on a rolling 60 second window
+          raise LimitExceeded.new(response)
 
         else
           # 400 Bad Request. Check that your Uri and request body is well formed
@@ -139,6 +146,9 @@ module LitmosApiClient
         when 404 # 404 Not Found. The User/Course etc that you requested does not exist
           raise NotFound.new(response)
 
+        when 503 # 503 (Service Unavailable) - Rating Limit Exceeded. 100 requests per minute. This rate limit is based on a rolling 60 second window
+          raise LimitExceeded.new(response)
+
         else
           puts response.code
           # 400 Bad Request. Check that your Uri and request body is well formed
@@ -177,6 +187,9 @@ module LitmosApiClient
 
         when 404 # 404 Not Found. The User/Course etc that you requested does not exist
           raise NotFound.new(response)
+
+        when 503 # 503 (Service Unavailable) - Rating Limit Exceeded. 100 requests per minute. This rate limit is based on a rolling 60 second window
+          raise LimitExceeded.new(response)
 
         else
           # 400 Bad Request. Check that your Uri and request body is well formed
