@@ -10,7 +10,7 @@ module LitmosApiClient
   class ApiError < Exception; end
   class LimitExceeded < Exception; end
   class ArgumentError < Exception; end
-  
+
   class API
     include LitmosApiClient::Users
     include LitmosApiClient::Teams
@@ -36,14 +36,14 @@ module LitmosApiClient
       dont_parse_response = params.delete(:dont_parse_response)
 
       options = {
-        :content_type => :json, 
-        :accept => :json, 
+        :content_type => :json,
+        :accept => :json,
         :params => params.merge(:apikey => @api_key, :source => @source)
       }
 
       RestClient.get("#{@litmosURL}/#{path}", options) do |response, request, result|
         case response.code
-        when 200, 201 
+        when 200, 201
           # 200 Success. User/Course etc updated, deleted or retrieved
           # 201 Success. User/Course etc created
           if response.blank?
@@ -67,7 +67,7 @@ module LitmosApiClient
           # 409 Conflict. Often occurs when trying to create an item that already exists
           raise ApiError.new(response)
 
-        end        
+        end
       end
     end
 
@@ -77,15 +77,15 @@ module LitmosApiClient
       query_string = "?#{query_string}" unless query_string.blank?
 
       dont_parse_response = params.delete(:dont_parse_response)
-      
+
       options = {
-        :content_type => :json, 
-        :accept => :json, 
+        :content_type => :json,
+        :accept => :json,
       }
 
       RestClient.post("#{@litmosURL}/#{path}#{query_string}", params.to_json, options) do |response, request, result|
         case response.code
-        when 200, 201 
+        when 200, 201
           # 200 Success. User/Course etc updated, deleted or retrieved
           # 201 Success. User/Course etc created
 
@@ -111,25 +111,25 @@ module LitmosApiClient
           # 409 Conflict. Often occurs when trying to create an item that already exists
           raise ApiError.new(response)
 
-        end        
+        end
       end
     end
-    
+
     def put(path, params={}, query_params={})
       query_params = query_params.merge(:apikey => @api_key, :source => @source)
       query_string = query_params.collect { |k,v| "#{k}=#{CGI::escape(v)}" }.join('&')
       query_string = "?#{query_string}" unless query_string.blank?
 
       dont_parse_response = params.delete(:dont_parse_response)
-      
+
       options = {
-        :content_type => :json, 
-        :accept => :json, 
+        :content_type => :json,
+        :accept => :json,
       }
 
       RestClient.put("#{@litmosURL}/#{path}#{query_string}", params.to_json, options) do |response, request, result|
         case response.code
-        when 200, 201 
+        when 200, 201
           # 200 Success. User/Course etc updated, deleted or retrieved
           # 201 Success. User/Course etc created
 
@@ -156,7 +156,7 @@ module LitmosApiClient
           # 409 Conflict. Often occurs when trying to create an item that already exists
           raise ApiError.new(response)
 
-        end        
+        end
       end
     end
 
@@ -164,14 +164,14 @@ module LitmosApiClient
       dont_parse_response = params.delete(:dont_parse_response)
 
       options = {
-        :content_type => :json, 
-        :accept => :json, 
+        :content_type => :json,
+        :accept => :json,
         :params => params.merge(:apikey => @api_key, :source => @source)
       }
 
       RestClient.delete("#{@litmosURL}/#{path}", options) do |response, request, result|
         case response.code
-        when 200, 201 
+        when 200, 201
           # 200 Success. User/Course etc updated, deleted or retrieved
           # 201 Success. User/Course etc created
 
@@ -197,7 +197,7 @@ module LitmosApiClient
           # 409 Conflict. Often occurs when trying to create an item that already exists
           raise ApiError.new(response)
 
-        end        
+        end
       end
     end
 
