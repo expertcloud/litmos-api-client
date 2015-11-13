@@ -18,7 +18,9 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/garciaf/litmos-api-client'
   s.license = 'MIT'
 
+  s.add_runtime_dependency 'activesupport'
   s.add_runtime_dependency 'rest-client', '~> 1'
   s.add_development_dependency 'rake',  '~> 10.3'
-  s.add_development_dependency 'rspec', '~> 2.14'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'webmock'
 end
