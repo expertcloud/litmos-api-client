@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.date        = '2014-05-09'
   s.summary     = "Simple lib to consume litmos api"
   s.description = "Simple lib to consume litmos api from litmos platform"
-  s.authors     = ["Fabien Garcia"]
+  s.authors     = ["Fabien Garcia", "Lars Brillert"]
   s.email       = 'fab0670312047@gmail.com'
   s.files       = ["lib/litmos-api-client.rb"]
   s.files = [
@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake',  '~> 10.3'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'webmock'
+  s.add_development_dependency 'bundler'
 end
