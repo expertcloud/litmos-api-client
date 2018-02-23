@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.add_runtime_dependency 'activesupport'
-  s.add_runtime_dependency 'rest-client', '~> 1'
+  s.add_runtime_dependency 'rest-client'
   s.add_development_dependency 'rake',  '~> 10.3'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'webmock'
