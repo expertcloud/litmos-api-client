@@ -10,7 +10,7 @@ RSpec.describe '' do
       describe 'everything is awesome' do
         before do
           stub_request(verb, 'https://api.litmos.com/v1.svc/baz?apikey=api-key&source=source').
-            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'}).
+            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json' }).
             to_return(:status => 200, :body => {ok: true}.to_json, :headers => {})
         end
 
@@ -27,7 +27,7 @@ RSpec.describe '' do
       describe 'resource cannot be found' do
         before do
           stub_request(verb, 'https://api.litmos.com/v1.svc/baz?apikey=api-key&source=source').
-            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'}).
+            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json' }).
             to_return(:status => 404, :body => "", :headers => {})
         end
 
@@ -41,7 +41,7 @@ RSpec.describe '' do
           allow_any_instance_of(Object).to receive(:sleep)
 
           stub_request(verb, "https://api.litmos.com/v1.svc/baz?apikey=api-key&source=source").
-            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'}).
+            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json' }).
             to_return({:status => 503, :body => ""})
         end
 
@@ -54,7 +54,7 @@ RSpec.describe '' do
       describe 'something goes wrong' do
         before do
           stub_request(verb, "https://api.litmos.com/v1.svc/baz?apikey=api-key&source=source").
-            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'}).
+            with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Content-Type'=>'application/json' }).
             to_return(:status => 500, :body => "", :headers => {})
         end
 

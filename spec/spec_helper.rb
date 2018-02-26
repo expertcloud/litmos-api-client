@@ -5,8 +5,6 @@ require 'rspec'
 require 'webmock/rspec'
 require 'litmos_api_client'
 
-WebMock.disable_net_connect!
-
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
