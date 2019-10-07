@@ -70,14 +70,15 @@ module LitmosApiClient
       options = {
         :content_type => :json,
         :accept => :json,
-        :params => params.merge(:apikey => @api_key, :source => @source)
+        :apikey => @api_key,
+        :params => params.merge(:source => @source)
       }
 
       RestClient.get("#{@litmosURL}/#{path}", options, &response_handler(dont_parse_response))
     end
 
     def post(path, params={}, query_params={})
-      query_params = query_params.merge(:apikey => @api_key, :source => @source)
+      query_params = query_params.merge(:source => @source)
       query_string = query_params.collect { |k,v| "#{k}=#{CGI::escape(v)}" }.join('&')
       query_string = "?#{query_string}" unless query_string.blank?
 
@@ -86,13 +87,14 @@ module LitmosApiClient
       options = {
         :content_type => :json,
         :accept => :json,
+        :apikey => @api_key
       }
 
-      RestClient.post("#{@litmosURL}/#{path}#{query_string}", params.to_json, options,&response_handler(dont_parse_response))
+      RestClient.post("#{@litmosURL}/#{path}#{query_string}", params.to_json, options, &response_handler(dont_parse_response))
     end
 
     def put(path, params={}, query_params={})
-      query_params = query_params.merge(:apikey => @api_key, :source => @source)
+      query_params = query_params.merge(:source => @source)
       query_string = query_params.collect { |k,v| "#{k}=#{CGI::escape(v)}" }.join('&')
       query_string = "?#{query_string}" unless query_string.blank?
 
@@ -101,6 +103,7 @@ module LitmosApiClient
       options = {
         :content_type => :json,
         :accept => :json,
+        :apikey => @api_key
       }
 
       RestClient.put("#{@litmosURL}/#{path}#{query_string}", params.to_json, options, &response_handler(dont_parse_response))
@@ -112,13 +115,14 @@ module LitmosApiClient
       options = {
         :content_type => :json,
         :accept => :json,
-        :params => params.merge(:apikey => @api_key, :source => @source)
+        :apikey => @api_key,
+        :params => params.merge(:source => @source)
       }
 
       RestClient.delete("#{@litmosURL}/#{path}", options, &response_handler(dont_parse_response))
     end
 
-  protected
+    protected
 
     ASP_DATE_REGEXP=/\/Date\(([0-9]+)\+[0-9]+\)\//
 
