@@ -124,7 +124,7 @@ module LitmosApiClient
 
     protected
 
-    ASP_DATE_REGEXP=/\/Date\(([0-9]+)\+[0-9]+\)\//
+    ASP_DATE_REGEXP=/\/Date\(([0-9]+)[\+|\-][0-9]+\)\//
 
     def parse_asp_date(asp_date)
       DateTime.strptime(asp_date.gsub(ASP_DATE_REGEXP, '\1'), '%Q')
