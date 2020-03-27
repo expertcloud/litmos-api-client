@@ -21,8 +21,7 @@ RSpec.describe '' do
         it 'can omit the parsing and return the plain JSON' do
           expect(subject.send(verb, 'baz', dont_parse_response: true)).to eq({ok: true}.to_json)
         end
-
-      Accept-Encoding
+      end
 
       describe 'resource cannot be found' do
         before do
